@@ -1,0 +1,3 @@
+[submodule "conf-repo"]
+	path = conf-repo
+	url = https://github.com/ikaven1024/spring-cloud-demo-conf-repo.git

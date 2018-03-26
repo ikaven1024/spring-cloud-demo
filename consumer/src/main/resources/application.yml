@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: consumer
+server:
+  port: 8080
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8761/eureka/,http://peer1:8762/eureka/
+
+#熔断器
+feign:
+  hystrix:
+    enabled: true
+hystrix:         # 熔断器配置。为了方便演示，下面的配置有点极端。
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000    # 超时时间
+      circuitBreaker:
+        requestVolumeThreshold: 1           # 一个rolling window，超过请求数失败，才会触发短路
+        #errorThresholdPercentage: 1        # 按百分比触发短路
+        sleepWindowInMilliseconds: 30000    # 触发短路后，60s后关闭短路
+---
+spring:
+  profiles: consumer-2
+server:
+  port: 8081
