@@ -2,6 +2,14 @@
 spring:
   application:
     name: producer
+  ###### 链路跟踪 START #####
+  zipkin:
+    base-url: http://localhost:9000
+  sleuth:
+    sampler:
+      # 采用比率
+      percentage: 1.0
+  ###### END ##################
 eureka:
   client:
     serviceUrl:

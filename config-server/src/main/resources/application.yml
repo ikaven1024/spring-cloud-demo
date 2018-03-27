@@ -1,0 +1,30 @@
+server:
+  port: 8775
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native             # 使用本地配置文件，需要设置native
+  cloud:
+    config:
+      server:
+        native:                # 搜索本地文件
+          search-locations: file:E:/Projects/springcloud-demo/conf-local/
+#        git:
+#          uri: https://github.com/ikaven1024/spring-cloud-demo-conf-repo/     # 配置git仓库的地址
+#          search-paths: ""                                                    # git仓库地址下的相对地址，可以配置多个，用,分割。
+#          username:                                                          # git仓库的账号
+#          password:                                                          # git仓库的密码
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+management:
+  security:
+    enabled: false
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8761/eureka/
